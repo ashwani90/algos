@@ -1,33 +1,4 @@
 
-**Explanation:**
-Build a tree where each node holds the sum of a segment of the array. Queries recursively combine results.
-
----
-
-### 2. **Update an Element in Segment Tree**
-
-**Problem:**
-After building the segment tree for sum queries, update an element and maintain the tree.
-
-```python
-def update(self, idx, val):
-    self._update(0, self.n - 1, idx, val, 0)
-
-def _update(self, start, end, idx, val, index):
-    if start == end:
-        self.tree[index] = val
-        return
-    mid = (start + end) // 2
-    if idx <= mid:
-        self._update(start, mid, idx, val, 2*index + 1)
-    else:
-        self._update(mid+1, end, idx, val, 2*index + 2)
-    self.tree[index] = self.tree[2*index + 1] + self.tree[2*index + 2]
-
-# Use:
-seg_tree.update(1, 10)
-print(seg_tree.query(1, 3))  # Output: 22 (10 + 5 + 7)
-```
 
 **Explanation:**
 Update the tree by changing the leaf and re-calculating parent sums.
