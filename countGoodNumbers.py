@@ -25,19 +25,24 @@ Output: 564908303
 
 '''
 
+
 def countGoodNumbers(n):
     MOD = 10**9+7
 
     def pow(x, n):
+        # base condition
         if n==0:
             return 1
         
         res = 1
+        # loop through
         while n > 1:
+            # if current value is odd
             if n%2:
                 res = (res*x)%MOD
-            
+            # half the n
             n = n//2
+            # x squared
             x = (x*x)%MOD
         return res*x
     
