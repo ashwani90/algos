@@ -21,16 +21,18 @@ Explanation: There are 4 symmetric integers between 1200 and 1230: 1203, 1212, 1
 
 '''
 
+
 def countSymmetricIntegers(low, high):
     count = 0
     for i in range(low, high+1):
         i = str(i)
+        # edge case, ignore odd length numbers
         if len(i)%2:
             continue
-        
+        # convert to list so that we can compare partition of numbers
         i = list(i)
         n = len(i)
-        if sum(i[:n//2]) == sum(i[n//2+1:]):
+        if sum(i[:n//2] == sum(i[n//2+1:])):
             count += 1
     
     return count
